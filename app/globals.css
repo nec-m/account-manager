@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #FBFBFA;
+  --color-foreground: #111111;
+  --color-panel: #FFFFFF;
+  --color-border: #EAEAEA;
+
+  --color-primary: #111111;
+  --color-primary-foreground: #FFFFFF;
+
+  --color-muted: #F7F6F3;
+  --color-muted-foreground: #686763;
+
+  --color-danger: #9F2F2D;
+  --color-danger-foreground: #FDEBEC;
+
+  --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", source-han-sans-sc, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "PingFang SC", "Microsoft YaHei", monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-primary selection:text-primary-foreground;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-[13px] font-medium transition-all focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary disabled:pointer-events-none disabled:opacity-50 px-4 py-2;
+  }
+
+  .btn-default {
+    @apply bg-white border border-border text-foreground hover:bg-muted shadow-none;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground shadow-none hover:scale-[0.98];
+  }
+
+  .btn-danger {
+    @apply bg-[#FDEBEC] text-danger shadow-none hover:scale-[0.98] border-transparent;
+  }
+
+  .btn-ghost {
+    @apply hover:bg-muted text-foreground border border-transparent;
+  }
+
+  .input {
+    @apply flex h-10 w-full rounded-md border border-border bg-white px-3 py-2 text-[13px] shadow-none transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:border-primary focus-visible:ring-1 focus-visible:ring-primary disabled:cursor-not-allowed disabled:opacity-50;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

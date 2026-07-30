@@ -1,0 +1,42 @@
+# Dependencies
+/node_modules/
+
+# Next.js and build output
+/.next/
+/out/
+/build/
+/coverage/
+
+# Runtime data
+/data.db*
+/data.json
+
+# Environment files
+.env*
+!.env.example
+
+# Logs and local caches
+*.log
+*.tsbuildinfo
+.pnp*
+.yarn/
+.npm/
+.vercel/
+
+# Operating system and editor files
+.DS_Store
+Thumbs.db
+/.idea/
+/.vscode/
+
+# Local agent and private documentation files
+/.agents/
+/.codex/
+/.superpowers/
+/docs/
+/AGENTS.md
+/skills-lock.json
+
+# Sensitive key material
+*.pem
+*.key

@@ -1,0 +1,38 @@
+{
+  "name": "account-manager",
+  "version": "1.2.2",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "prestart": "node scripts/validate-auth-config.mjs",
+    "start": "next start -H 0.0.0.0",
+    "test:unit": "node --test \"tests/*.test.mjs\"",
+    "test:ui": "node tests/support/run-ui-tests.mjs",
+    "test": "npm run test:unit && npm run test:ui"
+  },
+  "dependencies": {
+    "@phosphor-icons/react": "^2.1.10",
+    "date-fns": "^4.4.0",
+    "motion": "^12.42.2",
+    "next": "16.2.12",
+    "otplib": "^13.4.1",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^6.0.1",
+    "totp-generator": "^2.0.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "autoprefixer": "^10.5.4",
+    "postcss": "^8.5.21",
+    "puppeteer": "^25.3.0",
+    "tailwindcss": "^4.3.3"
+  }
+}
