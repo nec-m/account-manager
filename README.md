@@ -1,46 +1,46 @@
 # Account Manager
 
-Account Manager is a self-hosted Next.js application for organizing accounts, phone numbers, credentials, two-factor authentication details, and account-to-phone bindings. Data is stored locally in SQLite and access is protected by administrator and viewer roles.
+Account Manager 是一个可自行部署的 Next.js 应用，用于管理账号、手机号、登录凭证、双重验证信息，以及账号与手机号之间的绑定关系。数据存储在本地 SQLite 数据库中，并通过管理员和查看成员两种角色控制访问权限。
 
-## Requirements
+## 环境要求
 
-- Node.js 22.12.0 or later
+- Node.js 22.12.0 或更高版本
 - npm
 
-## Install and run
+## 安装与运行
 
-Install the exact dependency versions from the lock file:
+根据锁文件安装确定版本的依赖：
 
 ```bash
 npm ci
 ```
 
-For local development, copy `.env.example` to `.env.local`, replace the placeholder administrator password, and start the development server:
+本地开发时，将 `.env.example` 复制为 `.env.local`，把示例管理员密码替换为符合要求的密码，然后启动开发服务器：
 
 ```bash
 npm run dev
 ```
 
-For production, provide the variables from `.env.example` through your process environment, then build and start the application:
+生产环境需要通过进程环境提供 `.env.example` 中的变量，然后构建并启动应用：
 
 ```bash
 npm run build
 npm start
 ```
 
-## First administrator
+## 首位管理员
 
-When the database contains no users, `INITIAL_ADMIN_USERNAME` and `INITIAL_ADMIN_PASSWORD` create the first administrator. The password must contain at least 10 characters. These variables never overwrite an existing user.
+当数据库中还没有用户时，应用会使用 `INITIAL_ADMIN_USERNAME` 和 `INITIAL_ADMIN_PASSWORD` 创建首位管理员。密码至少需要 10 个字符。这两个变量不会覆盖任何已有用户。
 
-Remove bootstrap credentials from the process environment after the administrator has been created, and do not commit real credentials or environment files.
+管理员创建成功后，请从进程环境中移除初始化凭证。不要把真实凭证或环境配置文件提交到版本库。
 
-## Security and data
+## 安全与数据保护
 
-- Use HTTPS for any access outside a trusted local development environment and set `AUTH_COOKIE_SECURE=true` when HTTPS is enabled.
-- Do not expose the application directly to the public internet without an HTTPS reverse proxy and appropriate network access controls.
-- `data.db`, its WAL/SHM files, and database backups can contain passwords, two-factor secrets, sessions, and personal information. Keep them outside version control and protect backups accordingly.
-- Repository tests use reserved `.invalid` domains, NANP `555-01xx` phone numbers, and intentionally non-production passwords, tokens, and hashes. They are fixtures only.
+- 在可信的本地开发环境之外访问应用时，请使用 HTTPS；启用 HTTPS 后，需要设置 `AUTH_COOKIE_SECURE=true`。
+- 不要在缺少 HTTPS 反向代理和适当网络访问控制的情况下，把应用直接暴露到公网。
+- `data.db`、对应的 WAL/SHM 文件以及数据库备份可能包含密码、双重验证密钥、会话和个人信息。请确保它们不进入版本控制，并妥善保护备份。
+- 仓库测试使用保留的 `.invalid` 域名、NANP `555-01xx` 测试号码，以及特意设置的非生产密码、令牌和哈希。这些内容仅用于测试夹具。
 
-## License
+## 开源许可
 
-Licensed under the [MIT License](LICENSE).
+本项目基于 [MIT License](LICENSE) 开源。
